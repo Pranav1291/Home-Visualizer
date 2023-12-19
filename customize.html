@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize</title>
+</head>
+<body>
+    <h2>Customize Your Home</h2>
+    <img src="{{ image_path }}" alt="Original Image">
+    <form action="/customize/{{ image_path }}" method="POST">
+        <label for="color">Choose a Color (RGB):</label>
+        <input type="text" name="color" id="color" placeholder="e.g., 255,0,0" required>
+        
+        <p>Select walls to paint:</p>
+        <label><input type="checkbox" name="walls" value="100,100,200,200"> Wall 1</label>
+        <label><input type="checkbox" name="walls" value="250,150,400,300"> Wall 2</label>
+        <!-- Add more walls as needed -->
+
+        <button type="submit">Preview</button>
+    </form>
+    {% if result_path %}
+        <h3>Preview:</h3>
+        <img src="{{ result_path }}" alt="Result Image">
+    {% endif %}
+</body>
+</html>
